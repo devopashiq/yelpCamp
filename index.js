@@ -1,33 +1,38 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const ExpressError = require("./utils/ExpressErrorHandler");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+const ExpressError = require("./utils/ExpressErrorHandler");
+const passport = require("passport");
+const localStrategy = require("passport-local");
+
 const campgroundroute = require("./routes/campground");
 const reviewroute = require("./routes/review");
-const session = require('express-session');
-const flash = require('connect-flash');
+const usersroute = require("./routes/users");
+
+const session = require("express-session");
+const flash = require("express-flash");
+
+const User = require("./models/user");
+
+
 //session
- const sessionConfig={
-  secret:"dsdehdbjdsfs",
-  resave:false,
-  saveUninitialized:true,
-  cookie:{
-    httpOnly:true,
-    express:Date.now() + 1000*60*60*24*7,
-    maxAge: 1000*60*60*24*7
-  } 
-
- }
-
- app.use(session(sessionConfig));
- app.use(flash());
- 
-
+const sessionConfig = {
+  secret: "dsdehdbjdsfs",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    express: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  },
+};
+app.use(session(sessionConfig));
+app.use(flash());
 //_method override
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //ejs path
@@ -47,23 +52,38 @@ app.listen(3000, () => {
   console.log("server is runnig on port 3000");
 });
 
+//passport
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // Middleware to make flash messages available in templates
+
 app.use((req, res, next) => {
+  
+  res.locals.currentUser = req.user;
   res.locals.success_msg = req.flash("success");
   res.locals.error_msg = req.flash("error");
   next();
 });
-
 
 //home route
 app.get("/", (req, res) => {
   res.render("home");
 });
 
-//campground route
+//Campground Route
 app.use("/campgrounds", campgroundroute);
-//Review routes
+
+//Review Routes
 app.use("/campgrounds/:id/reviews", reviewroute);
+
+//User Routes
+app.use("/", usersroute);
 
 //Global error
 app.all("*", (req, res) => {

@@ -4,19 +4,22 @@ const validateForm = require("../utils/valdiateForm");
 const router = express.Router();
 const wrapAsync = require("../utils/asyncHanlder");
 const Campground = require("../models/campground");
+const {isLoggedIn} = require("../utils/isLoggedIn");
 
 router.get("", async (req, res) => {
+ 
   const camps = await Campground.find({});
 
   res.render("campgrounds/index", { camps });
 }); 
 
-router.get("/new", (req, res) => {
+router.get("/new",isLoggedIn, (req, res) => {
+  
   res.render("campgrounds/new");
 });
 router.post(
   "/",
-  validateForm(CampgroundSchema),
+ isLoggedIn, validateForm(CampgroundSchema),
   wrapAsync(async (req, res, next) => {
     const { campground } = req.body;
 
@@ -29,7 +32,7 @@ router.post(
 );
 
 router.get(
-  "/:id",
+  "/:id",isLoggedIn,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const camp = await Campground.findById(id).populate("reviews").exec();
@@ -44,7 +47,7 @@ router.get(
 );
 
 router.get(
-  "/:id/edit",
+  "/:id/edit",isLoggedIn,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const camp = await Campground.findById(id);
@@ -57,7 +60,7 @@ router.get(
 );
 
 router.put(
-  "/:id/edit",
+  "/:id/edit",isLoggedIn,
   validateForm(CampgroundSchema),
   wrapAsync(async (req, res) => {
     const { id } = req.params;
@@ -73,7 +76,7 @@ router.put(
 );
 
 router.delete(
-  "/:id",
+  "/:id",isLoggedIn,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
 

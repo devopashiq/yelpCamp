@@ -2,7 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 const wrapAsync = require("../utils/asyncHanlder");
 const passport = require("passport");
-const { storeReturnTo } = require("../utils/isLoggedIn");
+const { storeReturnTo } = require("../middleware/isLoggedIn");
 const router = express.Router();
 
 router.get("/register", (req, res) => {

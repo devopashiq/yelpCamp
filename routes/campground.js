@@ -1,10 +1,10 @@
 const express = require("express");
 const {CampgroundSchema} = require('../schemas');
-const validateForm = require("../utils/valdiateForm");
+const validateForm = require("../middleware/valdiateForm");
 const router = express.Router();
 const wrapAsync = require("../utils/asyncHanlder");
 const Campground = require("../models/campground");
-const {isLoggedIn} = require("../utils/isLoggedIn");
+const {isLoggedIn} = require("../middleware/isLoggedIn");
 
 router.get("", async (req, res) => {
  

@@ -1,5 +1,5 @@
 const express = require("express");
-const validateForm = require("../utils/valdiateForm");
+const validateForm = require("../middleware/valdiateForm");
 const router = express.Router({mergeParams:true});
 const wrapAsync = require("../utils/asyncHanlder");
 const Campground = require("../models/campground");

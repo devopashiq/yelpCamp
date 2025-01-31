@@ -1,4 +1,4 @@
-const ExpressError = require("./ExpressErrorHandler");
+const ExpressError = require("../utils/ExpressErrorHandler");
 
 
 const validateForm =(Schema)=> (req, res, next) => {

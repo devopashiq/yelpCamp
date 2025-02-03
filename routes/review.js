@@ -1,44 +1,23 @@
-const express = require("express");
-const validateForm = require("../middleware/valdiateForm");
-const router = express.Router({mergeParams:true});
-const wrapAsync = require("../utils/asyncHanlder");
-const Campground = require("../models/campground");
-const Review = require("../models/review");
-const {ReviewSchema } = require('../schemas');
-
-
+const express = require('express')
+const validateForm = require('../middleware/valdiateForm')
+const router = express.Router({ mergeParams: true })
+const wrapAsync = require('../utils/asyncHanlder')
+const Campground = require('../models/campground')
+const Review = require('../models/review')
+const { ReviewSchema } = require('../schemas')
+const { isLoggedIn } = require('../middleware/isLoggedIn')
+const isAuthor = require('../middleware/isAuthor')
+const reviews = require('../controllers/reviews')
 
 router.post(
-    "/",validateForm(ReviewSchema),
-    wrapAsync(async (req, res) => {
-      const { review } = req.body;
-     
-      const { id } = req.params;
-      
-      const campground = await Campground.findById(id);
-      const newReview = new Review(review);
-        
-      await newReview.save();
-      campground.reviews.push(newReview);
-      await campground.save();
-      req.flash("success","Created a new review")
-      res.redirect(`/campgrounds/${id}`);
-    })
-  );
-  
-  router.delete("/:reviewId", wrapAsync(async (req,res)=>{
-    const{id,reviewId} = req.params;
-    console.log(req.params)
-    const review = await Review.findByIdAndDelete(reviewId);
+    '/',isLoggedIn,
+    validateForm(ReviewSchema),
+    wrapAsync(reviews.createReview)
+) 
 
-      console.log(review)
-    const campground = await Campground.findByIdAndUpdate(id ,{$pull:{reviews:reviewId}});
-  
-    campground.save();
-    
-    req.flash("success","Deleted a  review")
-    res.redirect(`/campgrounds/${id}`);
-   
-  }))
+router.delete(
+    '/:reviewId',isLoggedIn,isAuthor(Review),
+    wrapAsync(reviews.deleteReview)
+)
 
-  module.exports = router;
+module.exports = router

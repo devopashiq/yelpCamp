@@ -1,0 +1,1 @@
+--fix the edge case in index and show page rendering of images if it empty

@@ -1,8 +1,7 @@
-const wrapAsync=(func)=>{
-  return (req,res,next)=>{
-     func(req,res,next).catch(next);
-  }
+const wrapAsync = func => {
+    return (req, res, next) => {
+        func(req, res, next).catch(next)
+    }
+}
 
-  }
-
-  module.exports = wrapAsync
+module.exports = wrapAsync

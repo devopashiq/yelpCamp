@@ -1,15 +1,24 @@
-const Campground = require("../models/campground");
+const isAuthor = model => async (req, res, next) => {
+    const { id, reviewId } = req.params
+    let result;
+    if (model.modelName === 'Campground') {
+        result = await model.findById(id)
+    } else if (model.modelName === 'Review') {
+        result = await model.findById(reviewId)
+    }
+   
 
-const isAuthor = async (req, res, next) => {
-    const { id } = req.params;
-    const camp = await Campground.findById(id);
-    
-    if (!camp || !camp.author.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+    if (!result) {
+        req.flash('error', 'Resource not found!')
+        return res.redirect('/campgrounds') // Redirect to campgrounds if nothing is found
     }
 
-    next(); // Proceed to the next middleware or route handler
-};
+    if (!result.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!')
+        return res.redirect(`/campgrounds/${id}`) // Redirect back to campground
+    }
 
-module.exports = isAuthor;
+    next() // Proceed to the next middleware or route handler
+}
+
+module.exports = isAuthor

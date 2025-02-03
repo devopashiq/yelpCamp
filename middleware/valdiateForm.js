@@ -1,17 +1,15 @@
-const ExpressError = require("../utils/ExpressErrorHandler");
+const ExpressError = require('../utils/ExpressErrorHandler')
 
-
-const validateForm =(Schema)=> (req, res, next) => {
-    const { error } = Schema.validate(req.body);
+const validateForm = Schema => (req, res, next) => {
+    const { error } = Schema.validate(req.body)
   
     if (error) {
-      const msg = error.details.map((el) => el.message).join(",");
-  
-      throw new ExpressError(msg, 400);
+        const msg = error.details.map(el => el.message).join(',')
+
+        throw new ExpressError(msg, 400)
     } else {
-      next();
+        next()
     }
-  };
+}
 
-
-  module.exports = validateForm;
+module.exports = validateForm

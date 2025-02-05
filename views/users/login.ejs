@@ -1,24 +1,31 @@
 <% layout('layout/boilerplate') %>
-<h1>Sign In!</h1>
-<form action="/login" class="validation" method="POST" novalidate>
-    <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required />
+<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card shadow w-100 d-flex flex-column overflow-hidden" style="max-width: 400px; height: 500px;">
+                <img src="https://images.pexels.com/photos/2422265/pexels-photo-2422265.jpeg?cs=srgb&dl=pexels-josh-hild-1270765-2422265.jpg&fm=jpg" 
+                     alt="Login Image" class="card-img-top" 
+                     style="height: 200px; object-fit: cover; ">
+                <div class="card-body flex-grow-1 d-flex flex-column">
+                    <h5 class="card-title text-left">Login</h5>
+                    <form action="/login" class="needs-validation flex-grow-1 d-flex flex-column justify-content-between" method="POST" novalidate>
+                        <div>
+                            <div class="mb-3">
+                                <label class="form-label" for="username" >Username</label>
+                                <input class="form-control" type="text" id="username" name="username" required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password" placeholder="********" required />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success w-100">Sign In</button>
+                        </div>
+                    </form>
+                    <p class="text-center">Don't have an account? <a href="/register">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input
-            class="form-control"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="********"
-            required
-        />
-    </div>
-    <div class="mb-3">
-        <button class="btn btn-success">Sign In</button>
-        <p>Don't have an account? <a href="/register">Sign Up</a></p>
-    </div>
-</form>
+</div>

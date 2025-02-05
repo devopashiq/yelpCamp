@@ -1,8 +1,10 @@
 <% layout('layout/boilerplate') %>
 <link rel="stylesheet" href="/styles/stars.css">
 
+
 <div class="row">
     <div class="col-6">
+      
         <div class="card mb-3">
             <div id="carouselExample" class="carousel slide">
                 <div class="carousel-inner">
@@ -51,6 +53,7 @@
     </div>
         
     <div class="col-6">
+        <div id="map"></div>
         <% if(currentUser) {%>
         <h2>Leave a Review</h2>
         <form
@@ -87,7 +90,7 @@
             <div class="card-body">
                
                 <p class="starability-result" data-rating="<%= review.rating %>">
-                  Rated: 3 stars
+                 
                 </p>
                 <h6 class="card-subtitle mb-2 text-body-secondary">By <%=review.author.username %></h6>
                 <p class="card-text">Review: <%= review.body %></p>
@@ -105,5 +108,12 @@
         <% } %>
     </div>
 
-    
+   
 </div>
+<script>
+const mapToken='<%- process.env.MAPTILER_API_KEY %>';
+const campground =<%- JSON.stringify(camp) %>;
+</script>
+<script src="/script/displayMap.js">
+   
+</script>

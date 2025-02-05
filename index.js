@@ -4,6 +4,7 @@ if(process.env.NODE_ENV !== "production"){
 
 const express = require('express')
 const app = express()
+const mongoSanitize = require('express-mongo-sanitize');
 const path = require('path')
 const ejsMate = require('ejs-mate')
 const mongoose = require('mongoose')
@@ -43,8 +44,9 @@ app.set('view engine', 'ejs')
 app.engine('ejs', ejsMate)
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, './public/')))
+app.use(mongoSanitize());
 
-//mongo connection
+//mongo connection 
 const mongoURI = 'mongodb://127.0.0.1:27017/yelp-camp'
 mongoose
     .connect(mongoURI)
@@ -67,6 +69,7 @@ passport.deserializeUser(User.deserializeUser())
 // Middleware to make flash messages available in templates
 
 app.use((req, res, next) => {
+   
     res.locals.currentUser = req.user
     res.locals.success_msg = req.flash('success')
     res.locals.error_msg = req.flash('error')

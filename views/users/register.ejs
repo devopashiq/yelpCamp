@@ -1,34 +1,51 @@
+
 <% layout('layout/boilerplate') %>
-<h1>Sign Up!</h1>
-<form action="/register" class="validation" method="POST" novalidate>
-    <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="user[username]" required />
+<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card shadow w-100 d-flex flex-column overflow-hidden" style="max-width: 400px; ">
+                <img src="https://images.pexels.com/photos/2422265/pexels-photo-2422265.jpeg?cs=srgb&dl=pexels-josh-hild-1270765-2422265.jpg&fm=jpg" 
+                     alt="Login Image" class="card-img-top" 
+                     style="height: 200px; object-fit: cover; background-position: center; ">
+                <div class="card-body flex-grow-1 d-flex flex-column">
+                    <h5 class="card-title text-left">Sign Up</h5>
+                    <form action="/register" class="validation" method="POST" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="user[username]" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input
+                                class="form-control"
+                                type="email"
+                                id="email"
+                                name="user[email]"
+                                placeholder="example@gmail.com"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input
+                                class="form-control"
+                                type="password"
+                                id="password"
+                                name="user[password]"
+                                placeholder="********"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-success">Sign Up</button>
+                            <p>Already have an account? <a href="/login">Sign In</a></p>
+                        </div>
+                    </form>
+                    
+                    
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input
-            class="form-control"
-            type="email"
-            id="email"
-            name="user[email]"
-            placeholder="example@gmail.com"
-            required
-        />
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input
-            class="form-control"
-            type="password"
-            id="password"
-            name="user[password]"
-            placeholder="********"
-            required
-        />
-    </div>
-    <div class="mb-3">
-        <button class="btn btn-success">Sign Up</button>
-        <p>Already have an account? <a href="/login">Sign In</a></p>
-    </div>
-</form>
+</div>
+

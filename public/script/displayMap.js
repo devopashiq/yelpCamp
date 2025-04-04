@@ -1,3 +1,6 @@
+const clean = DOMPurify.sanitize('<b>hello there</b>');
+console.log(clean)
+
 const maptilerApiKey = mapToken;
 maptilersdk.config.apiKey = maptilerApiKey;
 

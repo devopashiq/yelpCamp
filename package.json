@@ -12,6 +12,7 @@
   "dependencies": {
     "@maptiler/client": "^1.8.1",
     "cloudinary": "^1.41.3",
+    "dompurify": "^3.2.4",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",

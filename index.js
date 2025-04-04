@@ -2,6 +2,7 @@ if(process.env.NODE_ENV !== "production"){
     require('dotenv').config()
 }
 
+
 const express = require('express')
 const app = express()
 const mongoSanitize = require('express-mongo-sanitize');
@@ -20,15 +21,18 @@ const usersroute = require('./routes/users')
 const session = require('express-session')
 const flash = require('express-flash')
 
-const User = require('./models/user')
+const User = require('./models/user');
+const { name } = require('ejs');
 
 //session
 const sessionConfig = {
+    name:"session",
     secret: 'dsdehdbjdsfs',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure:true,
         express: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }

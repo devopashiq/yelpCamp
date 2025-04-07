@@ -20,9 +20,11 @@ const usersroute = require('./routes/users')
 
 const session = require('express-session')
 const flash = require('express-flash')
+const helmet = require("helmet")
 
 const User = require('./models/user');
 const { name } = require('ejs');
+
 
 //session
 const sessionConfig = {
@@ -37,8 +39,11 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
-app.use(session(sessionConfig))
-app.use(flash())
+
+
+app.use(session(sessionConfig));
+app.use(flash());
+
 //_method override
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
@@ -61,7 +66,54 @@ app.listen(3000, () => {
     console.log('server is runnig on port 3000')
 })
 
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+   
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net",
+      "https://cdn.maptiler.com/"
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.mapbox.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+     "https://cdn.maptiler.com/",
+     "https://cdn.jsdelivr.net",
+];
+const connectSrcUrls = [
+
+    "https://api.maptiler.com/"
+];
+const fontSrcUrls = [];
+// app.use(
+//     helmet.contentSecurityPolicy({
+//         directives: {
+//             defaultSrc: [],
+//             connectSrc: ["'self'", ...connectSrcUrls],
+//             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+//             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+//             workerSrc: ["'self'", "blob:"],
+//             objectSrc: [],
+//             imgSrc: [
+//                 "'self'",
+//                 "blob:",
+//                 "data:",
+//                 "https://api.maptiler.com/",
+//                 "https://res.cloudinary.com/dc0mq3cko/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+//                 "https://images.unsplash.com/",
+//             ],
+//             fontSrc: ["'self'", ...fontSrcUrls],
+//         },
+//     })
+// );
+
 //passport
+
+
 
 app.use(passport.initialize())
 app.use(passport.session())

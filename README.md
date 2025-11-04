@@ -30,21 +30,13 @@ YelpCamp is a full-stack web application that allows users to explore, add, and 
 
 ## 📸 Screenshots
 
-> Place your screenshots inside a folder named `/screenshots` and reference them here like this:
-
-| Feature            | Screenshot                                       |
-| ------------------ | ------------------------------------------------ |
-| Home Page          |<img width="1855" height="916" alt="image" src="https://github.com/user-attachments/assets/e736798f-156e-47d6-84d5-3584a7a52d5c" />
-        |
-| Campground Details | <img width="1858" height="904" alt="image" src="https://github.com/user-attachments/assets/78303bd1-d4e8-4042-87b7-7cfadb830cdd" />
- |
-| Add Campground     | <img width="1850" height="917" alt="image" src="https://github.com/user-attachments/assets/024a73e3-bdc3-49b7-b344-b95a657b650f" />
-       |
-| Map Integration    | <img width="1855" height="912" alt="image" src="https://github.com/user-attachments/assets/84649f54-caf2-43d7-a7bc-21327d40ba19" />
-               |
-| Login    | <img width="1853" height="911" alt="image" src="https://github.com/user-attachments/assets/dc7703ea-4a71-4eb4-a9f5-811ae9444574" />
-
-               |
+| Feature                | Screenshot                                                                                                                         |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Home Page**          | <img width="700" alt="Home Page" src="https://github.com/user-attachments/assets/e736798f-156e-47d6-84d5-3584a7a52d5c" />          |
+| **Campground Details** | <img width="700" alt="Campground Details" src="https://github.com/user-attachments/assets/78303bd1-d4e8-4042-87b7-7cfadb830cdd" /> |
+| **Add Campground**     | <img width="700" alt="Add Campground" src="https://github.com/user-attachments/assets/024a73e3-bdc3-49b7-b344-b95a657b650f" />     |
+| **Map Integration**    | <img width="700" alt="Map Integration" src="https://github.com/user-attachments/assets/84649f54-caf2-43d7-a7bc-21327d40ba19" />    |
+| **Login Page**         | <img width="700" alt="Login Page" src="https://github.com/user-attachments/assets/dc7703ea-4a71-4eb4-a9f5-811ae9444574" />         |
 
 ---
 
@@ -94,7 +86,7 @@ YelpCamp is a full-stack web application that allows users to explore, add, and 
 
 * Built a complete **CRUD application** following MVC principles.
 * Gained hands-on experience with **Express routing, middleware, and session handling**.
-* Integrated **third-party APIs** (Mapbox) for geospatial functionality.
+* Integrated **third-party APIs (Mapbox)** for geospatial functionality.
 * Learned best practices for **data modeling and authentication** using Mongoose and Passport.js.
 
 ---
@@ -117,4 +109,4 @@ This project is for educational purposes, inspired by [Colt Steele’s Web Devel
 
 **Mhd Ashiq**
 Full Stack Developer | Node.js | EJS | MongoDB
-📧 ashiqdevop@gmail.com | 🌐http://www.linkedin.com/in/mohammed-ashiqp
+📧 [ashiqdevop@gmail.com](mailto:ashiqdevop@gmail.com) | 🌐 [LinkedIn](http://www.linkedin.com/in/mohammed-ashiqp)

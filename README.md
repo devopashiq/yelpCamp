@@ -34,10 +34,17 @@ YelpCamp is a full-stack web application that allows users to explore, add, and 
 
 | Feature            | Screenshot                                       |
 | ------------------ | ------------------------------------------------ |
-| Home Page          | ![Home](./screenshots/homepage.png)              |
-| Campground Details | ![Details](./screenshots/campground-details.png) |
-| Add Campground     | ![Add](./screenshots/add-campground.png)         |
-| Map Integration    | ![Map](./screenshots/mapbox.png)                 |
+| Home Page          | ![Home](<img width="1855" height="916" alt="image" src="https://github.com/user-attachments/assets/e736798f-156e-47d6-84d5-3584a7a52d5c" />
+)              |
+| Campground Details | ![Details](<img width="1858" height="904" alt="image" src="https://github.com/user-attachments/assets/78303bd1-d4e8-4042-87b7-7cfadb830cdd" />
+) |
+| Add Campground     | ![Add](<img width="1850" height="917" alt="image" src="https://github.com/user-attachments/assets/024a73e3-bdc3-49b7-b344-b95a657b650f" />
+)         |
+| Map Integration    | ![Map](<img width="1855" height="912" alt="image" src="https://github.com/user-attachments/assets/84649f54-caf2-43d7-a7bc-21327d40ba19" />
+)                 |
+| Login    | ![Map](<img width="1853" height="911" alt="image" src="https://github.com/user-attachments/assets/dc7703ea-4a71-4eb4-a9f5-811ae9444574" />
+
+)                 |
 
 ---
 

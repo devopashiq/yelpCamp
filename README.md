@@ -109,5 +109,5 @@ This project is for educational purposes, inspired by [Colt Steele’s Web Devel
 ### 👤 Author
 
 **Mhd Ashiq**
-Full Stack Developer | Node.js | Angular | MongoDB
-📧 [Your Email] | 🌐 [Your GitHub / Portfolio Link]
+Full Stack Developer | Node.js | EJS | MongoDB
+📧 ashiqdevop@gmail.com | 🌐http://www.linkedin.com/in/mohammed-ashiqp
